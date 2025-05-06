@@ -1,4 +1,4 @@
-# 17-Pazynuyk-Ostap
+# 17-Pazyniuk-Ostap
 
 
 Запущений сервіс без змін
