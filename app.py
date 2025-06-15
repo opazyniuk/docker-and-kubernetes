@@ -155,4 +155,3 @@ if __name__ == '__main__':
         time.sleep(random.randint(5, 15))
         raise Exception("Simulated failure after startup")
     app.run(host='0.0.0.0', port=PORT)
-    

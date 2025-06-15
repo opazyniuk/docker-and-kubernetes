@@ -17,4 +17,3 @@ INSERT INTO quotes (quote, work_title, author) VALUES
     ('It seems to me that if you or I must choose between two courses of thought or action, we should remember our dying and try so to live that our death brings no pleasure on the world.', 'Nobel Prize Speech', 'John Steinbeck'),
     ('Ideas are like rabbits. You get a couple and learn how to handle them, and pretty soon you have a dozen.', 'Journal of a Novel: The East of Eden Letters', 'John Steinbeck'),
     ('A sad soul can kill quicker than a germ.', 'How to Tell Good Guys From Bad Guys', 'John Steinbeck'); 
-    
