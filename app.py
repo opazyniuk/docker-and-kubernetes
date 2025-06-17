@@ -150,8 +150,27 @@ def info():
         }
     })
 
+@app.route('/fib')
+def compute_fib():
+    def fib(x):
+        if x <= 1:
+            return x
+        return fib(x - 1) + fib(x - 2)
+
+    try:
+        n = int(os.getenv("FIB_NUMBER", "35"))
+        if n > 40:
+            return jsonify({"error": "n is too large, please use n <= 40"}), 400
+    except ValueError:
+        return jsonify({"error": "Invalid FIB_NUMBER env variable"}), 400
+
+    result = fib(n)
+    return jsonify({"n": n, "result": result})
+
+# --- Run ---
 if __name__ == '__main__':
     if FAIL_AFTER_START:
         time.sleep(random.randint(5, 15))
         raise Exception("Simulated failure after startup")
     app.run(host='0.0.0.0', port=PORT)
+
