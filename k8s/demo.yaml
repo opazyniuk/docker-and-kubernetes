@@ -5,6 +5,9 @@ metadata:
   namespace: demo
   labels:
     app: demo-app
+  annotations:
+    promtail.io/scrape: "true"
+    promtail.io/path: "/var/log/containers/*${POD_NAME}*.log"
 spec:
   replicas: 2
   selector:
