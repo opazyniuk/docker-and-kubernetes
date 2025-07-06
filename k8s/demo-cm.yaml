@@ -4,5 +4,10 @@ metadata:
   name: app-config
   namespace: demo
 data:
-  BACKGROUND_COLOR: "#FFC0CB"
+  BACKGROUND_COLOR: "#0000ff"
   FIB_NUMBER: "21"
+  USE_POSTGRES: "true"
+  POSTGRES_HOST: "postgres"
+  POSTGRES_DB: "demo"
+  POSTGRES_USER: "user"
+  POSTGRES_PASSWORD: "password"

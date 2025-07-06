@@ -31,6 +31,31 @@ spec:
             configMapKeyRef:
               name: app-config
               key: FIB_NUMBER
+        - name: USE_POSTGRES
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: USE_POSTGRES
+        - name: POSTGRES_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: POSTGRES_HOST
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: POSTGRES_DB
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: POSTGRES_USER
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: POSTGRES_PASSWORD
         resources:
           requests:
             cpu: "100m"
@@ -38,3 +63,11 @@ spec:
           limits:
             cpu: "500m"
             memory: "256Mi"
+        volumeMounts:
+          - name: static
+            mountPath: /app/static
+      volumes:
+        - name: static
+          persistentVolumeClaim:
+            claimName: demo-static-pvc
+
