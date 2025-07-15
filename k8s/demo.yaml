@@ -13,6 +13,10 @@ spec:
   selector:
     matchLabels:
       app: demo-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000 
   template:
     metadata:
       labels:
@@ -69,6 +73,18 @@ spec:
         volumeMounts:
           - name: static
             mountPath: /app/static
+        livenessProbe:
+          httpGet:
+            path: /health/live
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health/ready
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10
       volumes:
         - name: static
           persistentVolumeClaim:
