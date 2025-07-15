@@ -1,0 +1,54 @@
+replicaCount: 2
+
+serviceAccount:
+  create: true
+  name: ""
+
+image:
+  repository: opazyniuk/python-app
+  pullPolicy: IfNotPresent
+  tag: hw-8
+
+service:
+  type: ClusterIP
+  port: 5000
+
+env:
+  backgroundColor: "#0000ff"
+  fibNumber: "10"
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+
+postgresql:
+  image: postgres
+  tag: "16"
+  user: postrges
+  password: postrges
+  database: demo
+  storage: 1Gi
+  port: 5432
